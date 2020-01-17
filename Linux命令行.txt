@@ -1,0 +1,40 @@
+查看防火墙开放端口：
+firewall-cmd --list-all
+
+添加防火墙开放端口（6379）：
+firewall-cmd --permanent --add-port=6379/tcp
+
+重载防火墙设置：
+firewall-cmd --reload
+
+后台运行jar包：
+nohup java -jar xxx.jar &
+
+查看当前路径：
+pwd
+
+查看某个文件的路径：
+whereis xxx
+
+禁止开机启动：
+systemctl disable xxx
+
+临时关闭：
+systemctl stop xxx
+
+安装rz sz
+yum install lrzsz
+
+跳回到上次的目录
+cd -
+跳转到根目录
+cd /
+
+解压文件到指定目录
+tar -zxvf xxx.tar.gz -C /xxx/xxx(指定目录)
+
+zookeeper启动命令
+sh zkServer.sh start
+
+查看端口占用情况
+netstat -anp | grep 2181

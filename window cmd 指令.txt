@@ -1,0 +1,14 @@
+查看端口占用：
+netstat -ano
+netstat -ano | findstr "8006"
+
+查看进程：
+tasklist | findstr "8036"
+
+杀掉进程：(/f-强制  /im-立即)
+taskkill /f /t /im java.exe
+taskkill /pid 8036
+
+redis客户端命令，使之支持过期通知事件
+config set notify-keyspace-events Ex
+

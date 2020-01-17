@@ -1,0 +1,20 @@
+Maven:
+
+maven assembly命令：
+stress-test-parent>mvn assembly:assembly -Dmaven.test.skip=true
+
+
+
+Redis:
+
+redis客户端命令，使之支持过期通知事件
+config set notify-keyspace-events Ex
+
+设置慢查询最大超时时间
+CONFIG  SET  slowlog-log-slower-than  num
+
+设置日志中保存的慢查询日志的最在数量
+CONFIG  SET  slowlog-max-len  num
+
+redis获取慢日志
+slowlog get
