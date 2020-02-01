@@ -9,6 +9,5 @@ tasklist | findstr "8036"
 taskkill /f /t /im java.exe
 taskkill /pid 8036
 
-redis客户端命令，使之支持过期通知事件
-config set notify-keyspace-events Ex
+
 
