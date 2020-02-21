@@ -9,7 +9,6 @@ tasklist | findstr "8036"
 taskkill /f /t /im java.exe
 taskkill /pid 8036
 
-
 解决cmd乱码问题：
 chcp 65001
 

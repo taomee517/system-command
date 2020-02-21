@@ -4,6 +4,12 @@ maven assembly命令：
 stress-test-parent>mvn assembly:assembly -Dmaven.test.skip=true
 
 
+Gradle:
+
+项目启动：
+gradlew(或gradle) bootrun
+
+
 
 Redis:
 
@@ -18,3 +24,26 @@ CONFIG  SET  slowlog-max-len  num
 
 redis获取慢日志
 slowlog get
+
+
+Java:
+
+java远程调试指令列表
+java -agentlib:jdwp=help
+
+(transport/suspend/server/address为常用的参数项)
+Option Name and Value            Description                       Default
+---------------------            -----------                       -------
+suspend=y|n                      wait on startup?                  y
+transport=<name>                 transport spec                    none
+address=<listen/attach address>  transport spec                    ""
+server=y|n                       listen for debugger?              n
+launch=<command line>            run debugger on event             none
+onthrow=<exception name>         debug on throw                    none
+onuncaught=y|n                   debug on any uncaught?            n
+timeout=<timeout value>          for listen/attach in milliseconds n
+mutf8=y|n                        output modified utf-8             n
+quiet=y|n
+
+远程调试指令
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005 -jar spring-demo-1.0.0.jar
