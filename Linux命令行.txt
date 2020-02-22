@@ -1,3 +1,16 @@
+切换到管理员权限操作:
+sudo root
+
+切换到管理员：
+su - (需要输入管理员密码)
+
+切换用户：
+su username
+
+改变文件的权限：
+chmod 777(7,4,1) xx.file
+
+
 查看防火墙开放端口：
 firewall-cmd --list-all
 
