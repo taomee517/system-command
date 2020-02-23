@@ -25,6 +25,10 @@ docker rmi -f $(docker images -qa)
 ## 新建并启动一个容器
 docker run -it hello-world(或image id)
 docker run -itd -p 6379:6379 --name myredis redis
+docker run -p 6379:6379 --name myredis -v $PWD/conf/redis.conf:/etc/redis/redis.conf -v $PWD/data:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes
+## 使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx
+docker run --name mynginx -d nginx:latest
+
 --name="nginx-lb": 为容器指定一个名称；
 -i: 以交互模式运行容器，通常与 -t 同时使用；
 -t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
@@ -60,6 +64,19 @@ docker restart containerId
 
 ## 查看某个容器的日志
 docker logs containerId
+-f : 跟踪日志输出
+--since :显示某个开始时间的所有日志
+-t : 显示时间戳
+--tail :仅列出最新N条容器日志
+
+## 查看某个容器中运行的进程
+docker top containerId
+
+## 查看某个容器的详细信息
+docker inspect containerId
+
+## 将容器内的文件拷贝到宿主机
+docker cp containerId /xx/xx/xx.file /data(前面一个地址是容器内的路径，后一个是宿主机的路径)
 
 ## 提交修改后的镜像
 docker commit -m "add redis config" -a "taomee" 9816d44eac93 redis:withconfig
@@ -172,5 +189,3 @@ OPTIONS说明：
 --volume , -v: 绑定一个卷
 
 
-## 使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx
-docker run --name mynginx -d nginx:latest
