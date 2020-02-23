@@ -1,17 +1,62 @@
+=======镜像命令集=======
+
 ## 搜索镜像
 docker search xxx (eg:redis, mysql, centos)
 
 ## 下载镜像
 docker pull xxx
 
+## 删除镜像
+docker rmi -f imagesId
+
+## 删除所有镜像
+docker rmi -f $(docker images -qa)
+
 ## docker镜像目录
 /var/lib/docker
+
+
+
+=======容器命令集=======
 
 ## container id存放路径
 /var/lib/docker/containers
 
-## 展示所有镜像
+## 新建并启动一个容器
+docker run -it hello-world(或image id)
+docker run -itd -p 6379:6379 --name myredis redis
+--name="nginx-lb": 为容器指定一个名称；
+-i: 以交互模式运行容器，通常与 -t 同时使用；
+-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+-P: 随机端口映射，容器内部端口随机映射到主机的高端口
+-p: 指定端口映射，格式为：主机(宿主)端口:容器端口
+-d: 后台运行容器，并返回容器ID；
+
+## 展示所有正在运行的容器
 docker ps
+-a :显示所有的容器，包括未运行的
+-f :根据条件过滤显示的内容
+--format :指定返回值的模板文件
+-l :显示最近创建的容器
+-n :列出最近创建的n个容器
+--no-trunc :不截断输出
+-q :静默模式，只显示容器编号
+-s :显示总的文件大小
+
+## 进入容器内部(代替 docker attach containerId)
+docker exec -it containerId /bin/bash
+
+## 停止某个容器
+docker stop containerId
+docker kill containerId(强制停止)
+
+## 删除容器
+docker rm containerId
+## 删除多个容器
+docker rm -f $(docker ps -qa)
+
+## 重启某个容器
+docker restart containerId
 
 ## 查看某个容器的日志
 docker logs containerId
@@ -23,8 +68,7 @@ docker commit -m "add redis config" -a "taomee" 9816d44eac93 redis:withconfig
 之后是用来创建镜像的容器的 ID；
 最后指定目标镜像的仓库名和 tag 信息
 
-## 进入容器内部(代替 docker attach containerId)
-docker exec -it containerId /bin/bash
+
 
 ## help 帮助
 Options:
