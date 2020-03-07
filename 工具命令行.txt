@@ -47,3 +47,7 @@ quiet=y|n
 
 远程调试指令
 java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005 -jar spring-demo-1.0.0.jar
+
+nohup后台运行
+nohup command > myout.file 2>&1 &
+nohup java -jar ms-eureka.jar > log.out 2>&1 &
